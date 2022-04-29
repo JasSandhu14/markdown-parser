@@ -89,7 +89,7 @@ public class MarkdownParseTest {
 
     @Test
     public void getLinksTest9() throws Exception {
-        String[] expected = {"()"};
+        String[] expected = {"There is no parenthesis"};
 
         assertArrayEquals(expected, allArrays[8]);
     }

@@ -59,7 +59,7 @@ public class MarkdownParse {
 
             // Seek for ) following (
             int closeParen = markdown.indexOf(")", openParen);
-            
+
             // If doesn't exist, then termiante
             if(closeParen < 0){
                 break;
