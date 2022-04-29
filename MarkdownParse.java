@@ -13,9 +13,14 @@ public class MarkdownParse {
         // upto next )
         int newLinkIndex = 0;
         // Check each index of the Markdown file until it reaches the end
+        int openBracket = markdown.indexOf("[", newLinkIndex);
+        if (openBracket < 0) {
+            toReturn.add("There is no parenthesis");
+        }
+
         while(newLinkIndex < markdown.length()) {
             // Assigns the index of the [, returns -1 if doesn't exist
-            int openBracket = markdown.indexOf("[", newLinkIndex);
+            openBracket = markdown.indexOf("[", newLinkIndex);
             
             // Stores index preceding [ for later check
             int indexBeforeOpenBracket = openBracket - 1;
