@@ -70,6 +70,12 @@ public class MarkdownParse {
                 break;
             }
 
+            // Check to see if there is another ) within the link ()
+            int followingCloseParen = markdown.indexOf(")", closeParen + 1);
+            while (followingCloseParen == (closeParen + 1)) {
+                closeParen = followingCloseParen;
+            }
+
             // Check to see if char at index preceding [ was a !, because then that is an image link and not url
             if (markdown.charAt(indexBeforeOpenBracket) != '!') {
                 // Only add if link was url and not image
@@ -91,7 +97,5 @@ public class MarkdownParse {
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
 	    System.out.println(links);
-
-        System.out.println("hi");
     }
 }
