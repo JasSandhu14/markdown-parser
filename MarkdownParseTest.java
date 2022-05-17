@@ -1,3 +1,4 @@
+import java.beans.Transient;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -10,11 +11,11 @@ public class MarkdownParseTest {
     Object[][] allArrays = {{"testFileArray"}, {"testFile2Array"}, 
         {"testFile3Array"}, {"testFile4Array"}, {"testFile5Array"}, 
         {"testFile6Array"}, {"testFile7Array"}, {"testFile8Array"},
-        {"testFile9Array"}};
+        {"testFile9Array"}, {"snippet1Array"}, {"snippet2Array"}, {"snippet3Array"}};
 
     String[] fileNames = {"test-file.md", "test-file2.md", "test-file3.md",
         "test-file4.md", "test-file5.md", "test-file6.md", "test-file7.md",
-        "test-file8.md", "test-file9.md"};
+        "test-file8.md", "test-file9.md", "snippet1.md", "snippet2.md", "snippet3.md"};
     
     @Before 
     public void setUp() throws Exception {
@@ -92,6 +93,24 @@ public class MarkdownParseTest {
         String[] expected = {"There is no parenthesis"};
 
         assertArrayEquals(expected, allArrays[8]);
+    }
+
+    @Test
+    public void testSnippet1() throws Exception{
+        String[] expected = {"`google.com", "google.com", "ucsd.edu"};
+        assertArrayEquals(expected, allArrays[9]);
+    }
+
+    @Test
+    public void testSnippet2() throws Exception{
+        String[] expected = {"a.com", "a.com(())", "example.com"};
+        assertArrayEquals(expected, allArrays[10]);
+    }
+
+    @Test
+    public void testSnippet3() throws Exception{
+        String[] expected = {"https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule"};
+        assertArrayEquals(expected, allArrays[11]);
     }
     
 }
